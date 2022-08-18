@@ -1,0 +1,76 @@
+#reportContainer {
+    width: 100%;
+    padding: 0px;
+    clear: both;
+  }
+  @media (max-width: 799px) {
+    #reportContainer {
+      height: 100vh;
+    }
+  }
+  
+  @media (min-width: 800px) and (max-width: 899px) {
+    #reportContainer {
+      height: 63vh;
+    }
+  }
+  
+  @media (min-width: 900px) and (max-width: 999px) {
+    #reportContainer {
+      height: 52vh;
+    }
+  }
+  
+  @media (min-width: 1000px) and (max-width: 1099px) {
+    #reportContainer {
+      height: 50vh;
+    }
+  }
+  
+  @media (min-width: 1100px) and (max-width: 1199px) {
+    #reportContainer {
+      height: 59vh;
+    }
+  }
+  
+  @media (min-width: 1100px) and (max-width: 1199px) {
+    #reportContainer {
+      height: 66vh;
+    }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1299px) {
+    #reportContainer {
+      height: 73vh;
+    }
+  }
+  
+  @media (min-width: 1300px) and (max-width: 1399px) {
+    #reportContainer {
+      height: 80vh;
+    }
+  }
+  
+  @media (min-width: 1400px) and (max-width: 1499px) {
+    #reportContainer {
+      height: 87vh;
+    }
+  }
+  
+  @media (min-width: 1500px) and (max-width: 1599px) {
+    #reportContainer {
+      height: 94vh;
+    }
+  }
+  
+  @media (min-width: 1600px) {
+    #reportContainer {
+      height: 97vh;
+    }
+  }
+  
+  .desktop-view iframe,
+  .mobile-view iframe {
+    border: none;
+  }
+  
