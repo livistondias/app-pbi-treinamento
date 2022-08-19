@@ -1,5 +1,21 @@
+<div>
+  <form>
+    <label for="User">Workspace: </label>
+    <input type="text" [(ngModel)]="workspaceid" name="workspaceid" />
+    <label for="User">Report: </label>
+    <input type="text" [(ngModel)]="reportid" name="reportid" />
+    <label for="User">PageName: </label>
+    <input type="text" [(ngModel)]="pageName" name="pageName" />
+    <label for="User">Email: </label>
+    <input type="text" [(ngModel)]="email" name="email" />
+    <button type="submit" (click)="onSubmit($event)" type="submit" name="action"
+      [disabled]="disableButton">Aplicar</button>
+  </form>
+  <div *ngIf="disableButton"><span>Aguarde carregando</span></div>
+  <br>
+</div>
 <div class="desktop-view" style="display: block;">
   <div id="reportContainer">
-    
+
   </div>
 </div>

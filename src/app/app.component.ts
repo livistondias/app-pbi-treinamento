@@ -14,24 +14,36 @@ import { PowerBiService } from './powerbi/powerbi.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
- 
-  public embedConfiguration: any;
+export class AppComponent implements OnInit {
 
+  public embedConfiguration: any;
+  public workspaceid: string;
+  public reportid: string;
+  public pageName: string;
+  public email: string;
+  public disableButton = false;
 
   constructor(private service: PowerBiService) { }
   ngOnInit(): void {
-    this.service.getReportEmbedToken('07c9412d-dda6-40a0-8d90-a32ff04eca96','0ae58b30-a04e-4ab0-8332-4eb9f6dbda20','').subscribe(
+
+  }
+
+  onSubmit(event: any) {
+    this.disableButton = true;
+    if (!this.email)
+      this.email = '';
+    this.service.getReportEmbedToken(this.workspaceid, this.reportid, this.email).subscribe(
       result => {
         this.embedConfiguration = result;
-        //this.embedConfiguration.pageName = '3680f7c6020d9ce0003d';       
-        //this.embedConfiguration.pageName = '2712ed1d-e298-420a-a519-41069eb15c0a';   
-        this.embedConfiguration.pageName = 'ReportSection4b3fbaa7dd7908d906d9';   
-        console.log(this.embedConfiguration);
-        this.showReport();         
+        if (this.pageName)
+          this.embedConfiguration.pageName = this.pageName;
+        this.showReport();
+        this.disableButton = false;
       },
       error => {
-        
+        alert('Erro ao buscar os dados');
+        this.disableButton = false;
+        console.log(error)
       }
     );
   }
@@ -42,7 +54,7 @@ export class AppComponent implements OnInit{
   // }
 
   showReport() {
-    let layoutType = LayoutType.Master;    
+    let layoutType = LayoutType.Master;
     if (this.embedConfiguration) {
 
       // if ($(window).width() < 799) {
@@ -59,8 +71,8 @@ export class AppComponent implements OnInit{
         pageName: this.embedConfiguration.pageName,
         pageView: 'fitToWidth',
         settings: {
-          filterPaneEnabled: false,
-          navContentPaneEnabled: false,          
+          filterPaneEnabled: true,
+          navContentPaneEnabled: true,
           layoutType: layoutType
         }
       };
